@@ -10,9 +10,11 @@ package cse360assignment02;
  */
 public class AddingMachine {
 	private int total;
+	private String history;
 	  
 	  public AddingMachine () {
 	    total = 0;  // not needed - included for clarity
+	    history = "";
 	  }
 	  
 	  /**
@@ -20,7 +22,7 @@ public class AddingMachine {
 	   * @return 	current value of type int
 	   */
 	  public int getTotal () {
-	    return 0;
+	    return this.total;
 	  }
 	  
 	  /**
@@ -28,6 +30,12 @@ public class AddingMachine {
 	   * @param value	the value to be added to the total
 	   */
 	  public void add (int value) {
+		  if (total == 0 && history.length() == 0) {
+			  history = "0 + " + value;
+		  } else {
+			  history = history + " + " + value;
+		  }
+		  total += value;
 	  }
 	  
 	  /**
@@ -35,6 +43,12 @@ public class AddingMachine {
 	   * @param value	the value to be subtracted from the total
 	   */
 	  public void subtract (int value) {
+		  if (total == 0 && history.length() == 0) {
+			  history = "0 - " + value;
+		  } else {
+			  history = history + " - " + value;
+		  }
+		  total = total - value;
 	  }
 	  
 	  /**
@@ -42,12 +56,14 @@ public class AddingMachine {
 	   * @return	the history of the transactions as a string
 	   */
 	  public String toString () {
-	    return "";
+	    return this.history;
 	  }
 	  
 	  /**
 	   * Clears the "memory"
 	   */
 	  public void clear() {
+		  this.history = "";
+		  this.total = 0;
 	  }
 }
